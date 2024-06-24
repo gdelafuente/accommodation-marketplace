@@ -1,6 +1,14 @@
 .PHONY: test
-test: 
+test:
 	go test ./...
+
+.PHONY: install-dev-dependencies
+install-dev-dependencies:
+	go install github.com/matryer/moq@latest
+
+.PHONY: generate
+generate: install-dev-dependencies
+	go generate ./...
 
 .PHONY: help
 help: ## Shows help

@@ -1,6 +1,7 @@
 package entities
 
 import (
+	"context"
 	"errors"
 )
 
@@ -53,4 +54,9 @@ type Features struct {
 	Garden           bool
 	Pool             bool
 	PetFriendly      bool
+}
+
+//go:generate moq -rm -out ./accommodations_view_mock.go . AccommodationsView
+type AccommodationsView interface {
+	FetchAccommodationsForSpecification(ctx context.Context, spec Specification) ([]Accommodation, error)
 }
